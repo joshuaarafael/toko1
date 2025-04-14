@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('img/background.jpg'); /* Path gambar background */
+    background-size: cover; /* Gambar menyesuaikan ukuran layar */
+    background-position: center; /* Gambar di tengah */
+    background-repeat: no-repeat; /* Tidak mengulang gambar */
+    background-attachment: fixed; /* Latar belakang tetap saat scroll */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Tinggi minimum untuk mengisi layar */
+    width: 100%; /* Lebar penuh halaman */
+    background: rgba(255, 255, 255, 0.5); /* Warna putih dengan transparansi */
+    box-shadow: none; /* Hilangkan bayangan */
+    margin: 0; /* Hilangkan margin luar */
+    padding: 20px; /* Tambahkan padding jika perlu */
+    border-radius: 0; /* Sudut tidak membulat */
+    flex-direction: column; /* Agar konten disusun secara vertikal */
+}
+
+.login-box {
+    width: 350px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.login-box h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-group button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 15px;
+    color: #555;
+}
+
+p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
