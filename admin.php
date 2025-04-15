@@ -2,12 +2,12 @@
 session_start();
 include('koneksi.php');
 
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin') {
+if (!isset($_SESSION['users']) || $_SESSION['users']['role'] != 'admin') {
     header('Location: login.php');
     exit;
 }
 
-$q = "SELECT * FROM pesanan"; 
+$q = "SELECT * FROM pesan"; 
 $hasil = $koneksi->query($q);
 ?>
 

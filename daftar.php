@@ -35,7 +35,25 @@ include "koneksi.php";
                 }
             ?>
 
-            <!-- HTML tetap sama -->
+            <form method="POST">
+                <h3>Pendaftaran Akun</h3>
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" id="nama" name="nama" placeholder="Masukan Nama">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Masukan Username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Masukan Password">
+                </div>
+                <div class="form-group">
+                    <button type="submit">Daftar User</button>
+                </div>
+                <p>Sudah punya akun? <a href="login.php">Login</a></p>
+            </form>
         </div>
     </div>
 </body>

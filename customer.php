@@ -2,12 +2,12 @@
 session_start();
 include('koneksi.php');
 
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'customer') {
+if (!isset($_SESSION['users']) || $_SESSION['users']['role'] != 'customer') {
     header("Location: login.php");
     exit;
 }
 
-$q = "SELECT * FROM pesanan";
+$q = "SELECT * FROM pesan";
 $hasil = $koneksi->query($q);
 
 if ($hasil === false) {
@@ -40,7 +40,7 @@ if ($hasil === false) {
     <div class="container">
         <div class="welcome-box">
         <img src="img/customer.png" alt="Pelanggan Photo" class="profile-image">
-        <h3>Selamat datang, <?php echo $_SESSION['user']['nama']; ?></h3>
+        <h3>Selamat datang, <?php echo $_SESSION['users']['nama']; ?></h3>
         </div>
 
         <div class="data-box">

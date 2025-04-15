@@ -2,12 +2,12 @@
 session_start();
 include('koneksi.php');
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['users'])) {
     header('Location: login.php');
     exit;
 }
 
-$nama_pengguna = $_SESSION['user']['nama']; 
+$nama_pengguna = $_SESSION['users']['nama']; 
 $edit = 0;
 $nama = "";
 $deskripsi = ""; 
@@ -18,7 +18,7 @@ if (isset($_GET['nama']) && isset($_GET['action'])) {
     $nama = $koneksi->real_escape_string($_GET['nama']);
     $action = $_GET['action'];
 
-    $q = "SELECT * FROM pesanan WHERE nama = '$nama'";  
+    $q = "SELECT * FROM pesan WHERE nama = '$nama'";  
     $hasil = $koneksi->query($q);
 
     if ($hasil && $hasil->num_rows > 0) {
@@ -33,7 +33,7 @@ if (isset($_GET['nama']) && isset($_GET['action'])) {
             $edit = 1; 
         }
     } else {
-        echo "<p>Barang tidak ditemukan di database.</p>";
+        echo "<p>Barang tidak ditemukan di daftar barang.</p>";
         exit;
     }
 }

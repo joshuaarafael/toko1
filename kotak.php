@@ -2,12 +2,12 @@
 session_start();
 include('koneksi.php');
 
-$konsumen = $_SESSION['user']['nama'];
+$konsumen = $_SESSION['users']['nama'];
 
-if ($_SESSION['user']['role'] == 'admin') {
-    $q = "SELECT * FROM barang";
+if ($_SESSION['users']['role'] == 'admin') {
+    $q = "SELECT * FROM brg";
 } else {
-    $q = "SELECT * FROM barang WHERE konsumen = '$konsumen'";
+    $q = "SELECT * FROM brg WHERE konsumen = '$konsumen'";
 }
 
 $hasil = $koneksi->query($q);
@@ -38,7 +38,7 @@ $hasil = $koneksi->query($q);
     <div class="header">
         <div class="header-left">
             <a href="kotak.php"><button>Pesanan</button></a>
-            <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+            <?php if ($_SESSION['users']['role'] == 'admin'): ?>
                 <a href="admin.php"><button>Dashboard</button></a>
             <?php else: ?>
                 <a href="customer.php"><button>Dashboard</button></a>
@@ -52,7 +52,7 @@ $hasil = $koneksi->query($q);
     <!-- Container -->
     <div class="container">
         <div class="welcome-box">
-            <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+            <?php if ($_SESSION['users']['role'] == 'admin'): ?>
                 <h3>Halaman Pesanan Admin</h3>
             <?php else: ?>
                 <h3>Halaman Pesanan Pelanggan: <?php echo $konsumen; ?></h3>
@@ -61,14 +61,14 @@ $hasil = $koneksi->query($q);
 
         <div class="data-box">
             <h2>Daftar Pesanan</h2>
-            <?php if ($_SESSION['user']['role'] == 'customer'): ?>
+            <?php if ($_SESSION['users']['role'] == 'customer'): ?>
                 <form action="proses.php" method="POST" onsubmit="return validateForm()">
                     <table>
                         <tr>
                             <th>Pilih</th>
                             <th>Konsumen</th>
-                            <th>ID Barang</th>
-                            <th>Barang</th>
+                            <th>ID barang</th>
+                            <th>barang</th>
                             <th>Harga</th>
                             <th>Alamat</th>
                             <th>No HP</th>
@@ -93,8 +93,8 @@ $hasil = $koneksi->query($q);
                 <table>
                     <tr>
                         <th>Konsumen</th>
-                        <th>ID Barang</th>
-                        <th>Barang</th>
+                        <th>ID brg</th>
+                        <th>brg</th>
                         <th>Harga</th>
                         <th>Alamat</th>
                         <th>No HP</th>

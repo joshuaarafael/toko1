@@ -2,14 +2,14 @@
 session_start();
 include('koneksi.php');
 
-if (!isset($_SESSION['user']['nama'])) {
+if (!isset($_SESSION['users']['nama'])) {
     header('Location: login.php');
     exit;
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'Hapus') {
     $nama = $_GET['nama'];
-    $q = "DELETE FROM pesanan WHERE nama = '$nama'";
+    $q = "DELETE FROM pesan WHERE nama = '$nama'";
 
     if ($koneksi->query($q)) {
         header('Location: admin.php');
@@ -23,7 +23,7 @@ if (isset($_POST['proses']) && $_POST['proses'] === 'Edit') {
         $deskripsi = $_POST['deskripsi'];
         $harga = $_POST['harga'];
 }
-        $q = "UPDATE pesanan SET deskripsi = '$deskripsi', harga = '$harga' WHERE nama = '$nama'";
+        $q = "UPDATE pesan SET deskripsi = '$deskripsi', harga = '$harga' WHERE nama = '$nama'";
         if ($koneksi->query($q)) {
             header('Location: admin.php');
             exit;
@@ -42,7 +42,7 @@ if (isset($_POST['proses']) && $_POST['proses'] == 'Tambah Barang') {
         exit;
     }
 
-    $cekQuery = "SELECT COUNT(*) FROM pesanan WHERE nama = '$nama'";
+    $cekQuery = "SELECT COUNT(*) FROM pesan WHERE nama = '$nama'";
     $result = $koneksi->query($cekQuery);
     $row = $result->fetch_row();
 
@@ -52,7 +52,7 @@ if (isset($_POST['proses']) && $_POST['proses'] == 'Tambah Barang') {
         exit;
     }
 
-    $q = "INSERT INTO pesanan (nama, deskripsi, harga) VALUES('$nama', '$deskripsi', '$harga')";
+    $q = "INSERT INTO pesan (nama, deskripsi, harga) VALUES('$nama', '$deskripsi', '$harga')";
     
     if ($koneksi->query($q)) {
         header("Location: admin.php");
@@ -68,13 +68,13 @@ if (isset($_POST['proses']) && $_POST['proses'] == 'Pesan Barang') {
     $alamat = $_POST['alamat'];
     $nomer_hp = $_POST['nomer_hp'];
 
-    $checkQuery = "SELECT 1 FROM barang WHERE id = '$id' AND konsumen = '$konsumen'";
+    $checkQuery = "SELECT 1 FROM brg WHERE id = '$id' AND konsumen = '$konsumen'";
     $checkResult = $koneksi->query($checkQuery);
 
     if ($checkResult && $checkResult->num_rows > 0) {
         exit;
     } else {
-        $q = "INSERT INTO barang (konsumen, id, nama, harga, alamat, nomer_hp) 
+        $q = "INSERT INTO brg (konsumen, id, nama, harga, alamat, nomer_hp) 
               VALUES ('$konsumen', '$id', '$nama', '$harga', '$alamat', '$nomer_hp')";
         if ($koneksi->query($q)) {
             header('Location: customer.php');
@@ -89,10 +89,10 @@ if (isset($_POST['proses']) && $_POST['proses'] == 'Pesan Barang') {
 if (isset($_POST['proses']) && $_POST['proses'] == 'Batal') {
     if (isset($_POST['id']) && !empty($_POST['id'])) {
         $id_barang = $_POST['id'];
-        $konsumen = $_SESSION['user']['nama']; 
+        $konsumen = $_SESSION['users']['nama']; 
 
         foreach ($id_barang as $id) {
-            $q = "DELETE FROM barang WHERE id = '$id' AND konsumen = '$konsumen'"; 
+            $q = "DELETE FROM brg WHERE id = '$id' AND konsumen = '$konsumen'"; 
 
             if (!$koneksi->query($q)) {
                 echo "Terjadi kesalahan: " . $koneksi->error;
