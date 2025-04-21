@@ -19,9 +19,9 @@ $hasil = $koneksi->query($q);
     <title>Halaman Administrator</title>
     <link rel="stylesheet" href="utama.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js?v=1"></script>
 </head>
 <body>
-    <!-- Header -->
     <div class="header">
         <div class="header-left">
             <a href="kotak.php"><button>Pesanan</button></a>
@@ -76,29 +76,5 @@ $hasil = $koneksi->query($q);
             </a>
         </div>
     </div>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#logout-btn').click(function () {
-                if (confirm('Apakah Anda yakin ingin keluar dari akun?')) {
-                    $.ajax({
-                        url: 'logout.php',
-                        type: 'POST',
-                        data: { action: 'logout' },
-                        success: function (response) {
-                            const result = JSON.parse(response);
-                            if (result.status === 'success') {
-                                alert(result.message);
-                                location.href = 'login.php';
-                            }
-                        },
-                        error: function () {
-                            alert('Terjadi kesalahan saat logout.');
-                        }
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>

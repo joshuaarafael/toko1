@@ -7,7 +7,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'logout') {
     echo json_encode(['status' => 'success', 'message' => 'Anda berhasil logout.']);
     exit;
 }
-
 header('Location: login.php');
 exit;
 ?>
