@@ -17,9 +17,9 @@ $hasil = $koneksi->query($q);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Administrator</title>
-    <link rel="stylesheet" href="utama.css" />
+    <link rel="stylesheet" href="utama.css?v=<?= time(); ?>" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="script.js?v=1"></script>
+    <script src="script.js?v=<?= time(); ?>"></script>
 </head>
 <body>
     <div class="header">
