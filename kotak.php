@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('koneksi.php');
+include('config.php');
 
 $konsumen = $_SESSION['users']['nama'];
 

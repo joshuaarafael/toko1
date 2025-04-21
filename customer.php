@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('koneksi.php');
+include('config.php');
 
 if (!isset($_SESSION['users']) || $_SESSION['users']['role'] != 'customer') {
     header("Location: login.php");

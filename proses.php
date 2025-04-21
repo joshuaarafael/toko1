@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('koneksi.php');
+include('config.php');
 
 if (!isset($_SESSION['users']['nama'])) {
     header('Location: login.php');
