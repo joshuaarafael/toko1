@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <!-- Isi dengan username dari localStorage jika ada -->
-                    <input type="text" id="username" name="username" placeholder="Masukkan Username" required readonly>
+                    <input type="text" id="username" name="username" placeholder="Masukkan Username">
                     <div id="username-error" class="error-message" style="display: none; color: red; font-size: 0.9em;"></div>
                 </div>
 
